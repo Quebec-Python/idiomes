@@ -10,4 +10,6 @@ Présentation des idiomes en Python 2.7
 
 ## Comment générer la présentation en HTML ?
 
-    $ fab start
+    $ fab gen
+    
+Ensuite, ouvrez le fichier *presentation.html* avec votre navigateur favori
