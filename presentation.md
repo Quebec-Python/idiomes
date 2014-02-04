@@ -34,6 +34,8 @@ En écrivant du code idiomatique.
 
 * Écrire du code et se faire réviser par nos collègues plus expérimentés
 * Lire le code de nos collègues plus expérimentés
+* Lire et appliquer le PEP8
+* Lire le code de modules existants et populaires
 * Lire le bouquin de Jeff Knupp :)
 
 ---
@@ -71,7 +73,7 @@ En écrivant du code idiomatique.
 
 ---
 
-## Éviter de tout mettre sur une même ligne (partie 2)
+## Éviter de tout mettre sur une même ligne
 
 <h3><i class="fa fa-thumbs-up"></i></h3>
 
@@ -85,7 +87,7 @@ En écrivant du code idiomatique.
 
 ---
 
-## Vérifier la valeur d'une même variable avec un *ou* logique
+## Vérifier toutes les valeurs possibles d'une variable
 
 <h3><i class="fa fa-thumbs-down"></i></h3>
 
@@ -98,7 +100,7 @@ En écrivant du code idiomatique.
 
 ---
 
-## Vérifier la valeur d'une même variable avec un *ou* logique
+## Vérifier toutes les valeurs possibles d'une variable
 
 <h3><i class="fa fa-thumbs-up"></i></h3>
 
@@ -262,6 +264,21 @@ En écrivant du code idiomatique.
 
 ---
 
+## Standard de formattage des class/functions/variables
+
+    !python
+    class UneClasseGigantesqueEtJavaesque:
+        pass
+
+    une_variable = "foo"
+
+    def une_fonction():
+        pass
+
+    UNE_CONSTANTE = 60 * 60
+
+---
+
 ## Créer un ```path``` menant à un répertoire/fichier
 
 <h3><i class="fa fa-thumbs-down"></i></h3>
@@ -284,7 +301,6 @@ En écrivant du code idiomatique.
     !python
     a_string = ""
     if key in my_dict:
-        # do something
         a_string = my_dict[key]
     else:
         a_string = "une valeur par défaut"
@@ -296,21 +312,127 @@ En écrivant du code idiomatique.
 <h3><i class="fa fa-thumbs-up"></i></h3>
 
     !python
-    a_string = my_dict.get()
+    a_string = my_dict.get(key, "une valeur par défaut")
 
 ---
 
 ## Utiliser des ```list comprehensions``` pour des boucles simples de transformation
 
+<h3><i class="fa fa-thumbs-down"></i></h3>
 
+    !python
+    # additionner 5 à tous les chiffres de la liste "a"
+    a = range(0, 10)
+    b = []
+
+    for index, item in enumerate(a):
+        b[index] = item + 5
+
+    a = b
 
 ---
 
-# Recommandations pour apprendre les idiomes d'un langage de programmation
+## Utiliser des ```list comprehensions``` pour des boucles simples de transformation
 
-* Lire le PEP8
-* Lire le code de module existant et populaire
-* Demandez à un ami/collègue de vous réviser
+<h3><i class="fa fa-thumbs-up"></i></h3>
+
+    !python
+    # additionner 5 à tous les chiffres de la liste "a"
+    a = range(0, 10)
+    a = [x + 5 for x in a]
+
+---
+
+## Utiliser des ```generator expressions``` au lieu des ```list comprehensions``` pour les listes avec une longueur non connu
+
+<h3><i class="fa fa-thumbs-down"></i></h3>
+
+    !python
+    # 500 millions de users = ouch
+    for name in [user.name.upper() for user in users]:
+        print name
+
+---
+
+## Utiliser des ```generator expressions``` au lieu des ```list comprehensions``` pour les listes avec une longueur non connu
+
+<h3><i class="fa fa-thumbs-up"></i></h3>
+
+    !python
+    # 500 millions de users = no hay problema senor !
+    for name in (user.name.upper() for user in users):
+        print name
+
+---
+
+## Utiliser des ```dict comprehensions``` pour créer des dictionnaires à partir d'une liste d'éléments
+
+<h3><i class="fa fa-thumbs-down"></i></h3>
+
+    !python
+    user_email = {}
+    for user in users_list:
+        if user.email:
+            user_email[user.name] = user.email
+
+---
+
+## Utiliser des ```dict comprehensions``` pour créer des dictionnaires à partir d'une liste d'éléments
+
+<h3><i class="fa fa-thumbs-up"></i></h3>
+
+    !python
+    user_email = {user.name: user.email
+                  for user in users_list if user.email}
+
+---
+
+## Ouverture/fermeture de fichier
+
+<h3><i class="fa fa-thumbs-down"></i></h3>
+
+    !python
+    f = open("un_fichier.txt", "r")
+    print f
+    f.close()
+
+---
+
+## Ouverture/fermeture de fichier
+
+<h3><i class="fa fa-thumbs-up"></i></h3>
+
+    !python
+    with open("un_fichier.txt", "r") as f:
+        print f
+    # close implicite à la sortie du with !
+
+---
+
+## Utiliser la fonction ```join``` pour concaténer des chaînes de caractères à partir d'une ```list```
+
+<h3><i class="fa fa-thumbs-down"></i></h3>
+
+    !python
+    loved = ["python", "books", "fruits", "latte"]
+    loved_string = ""
+    for i in loved:
+        loved_string += i + " and "
+
+    print("I love {} !".format(loved_string))
+    # I love python and books and fruits and latte and !
+
+---
+
+## Utiliser la fonction ```join``` pour concaténer des chaînes de caractères à partir d'une ```list```
+
+<h3><i class="fa fa-thumbs-up"></i></h3>
+
+    !python
+    loved = ["python", "books", "fruits", "latte"]
+    print("I love {} !".format(" and ".join(loved)))
+    # I love python and books and fruits and latte !
+
 
 ---
 
