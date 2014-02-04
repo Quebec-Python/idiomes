@@ -2,6 +2,10 @@ div.presentation, div.slide {
     background: #26458C;
 }
 
+a {
+    color:white;
+}
+
 pre {
     padding:5px;
     font-family: "Droid Sans Mono", sans-serif;
