@@ -264,7 +264,7 @@ En écrivant du code idiomatique.
 
 ---
 
-## Standard de formattage des class/functions/variables
+## Standard de nommmage des class/functions/variables
 
     !python
     class UneClasseGigantesqueEtJavaesque:
