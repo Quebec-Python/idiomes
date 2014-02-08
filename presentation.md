@@ -130,7 +130,7 @@ En écrivant du code idiomatique.
 <h3><i class="fa fa-thumbs-down"></i></h3>
 
     !python
-    def empty_list(a=[]):
+    def empty_list(a):
         # la liste "a" est vide
         if len(a) == 0:
             return True
@@ -143,7 +143,7 @@ En écrivant du code idiomatique.
 <h3><i class="fa fa-thumbs-up"></i></h3>
 
     !python
-    def empty_list(a=[]):
+    def empty_list(a):
         # la liste "a" est vide
         if not a:
             return True
@@ -156,7 +156,7 @@ En écrivant du code idiomatique.
 <h3><i class="fa fa-thumbs-up"></i> <i class="fa fa-thumbs-up"></i></h3>
 
     !python
-    def empty_list(a=[]):
+    def empty_list(a):
         # la liste "a" est vide
         return not a
 
@@ -167,6 +167,8 @@ En écrivant du code idiomatique.
     !python
     a = []
     is_empty = False if a else True
+    # ce qui suit est mieux :)
+    is_empty = len(a) == 0
 
 ---
 
